@@ -27,23 +27,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .logout(new Customizer<LogoutConfigurer<HttpSecurity>>() {
-                    @Override
-                    public void customize(LogoutConfigurer<HttpSecurity> httpSecurityLogoutConfigurer) {
-
-                    }
-                })
                 .csrf().disable()
-
                 .authorizeRequests()
                 .requestMatchers("/api/auth/**").permitAll()
-                .anyRequest().authenticated()
+                //.anyRequest().authenticated()
                 .and()
-                //.logout().permitAll()
                 .httpBasic();
-
         return http.build();
-
     }
 
 
